@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews and Ratings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+        }
+
+        .reviews {
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .review {
+            margin-bottom: 10px;
+        }
+
+        .review-name {
+            font-weight: bold;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: flex-start;
+            gap: 8px;  /* Adjusted spacing between stars */
+        }
+
+        .star-rating span {
+            position: relative;
+            font-size: 40px; /* Set the size of the stars */
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: 55px; /* Added left margin for each star */
+        }
+
+        .star-rating span::before {
+            content: '⭐';
+            position: absolute;
+            font-size: 40px; /* Ensure the size matches */
+            color: transparent; /* Initially no fill color */
+            border: 2px solid grey; /* Grey border for the star initially */
+            transition: color 0.2s ease, border 0.2s ease;
+        }
+
+        .star-rating span.selected::before {
+            color: gold;  /* Fill the selected stars with gold */
+            border: none; /* Remove the grey border when selected */
+        }
+
+        .star-rating span:hover::before {
+            color: gold;  /* Highlight stars in gold when hovered */
+            border: none; /* Remove the grey border when hovered */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Submit Your Review</h1>
+    <div class="form-container">
+        <form id="reviewForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="rating">Rating:</label><br>
+            <div class="star-rating" id="starRating">
+                <!-- Stars will be added dynamically -->
+            </div><br><br>
+
+            <label for="review">Review:</label><br>
+            <textarea id="review" name="review" rows="4" required></textarea><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <h2>All Reviews</h2>
+    <div id="reviewsContainer" class="reviews"></div>
+
+    <!-- Link to the external JS file -->
+    <script src="app.js"></script>
+</body>
+</html>
